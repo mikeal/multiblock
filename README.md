@@ -22,9 +22,9 @@ identifiers to each protocol.
 ## `lmh` - Length Prefixed Multihash
 
 It is often the case that a data provider does not wish to agree to
-unbounded reads of any data, even at the block layer (which we are
-expanding in some systems beyond the traditional 2mb limit). So we've
-wanted for some time an address that could include the size of the block
+unbounded reads, and this even applies to the block layer as we are
+expanding in some systems beyond the traditional 2mb limit. It's time 
+for a multihash address that can include the size of the block
 data as part of its multihash verification such that it provides a good
 contract between the reader and the provider.
 
