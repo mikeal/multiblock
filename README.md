@@ -86,7 +86,8 @@ A CAR header that:
     verified. 
   * This CID MUST use `lmh`.
 
-Unlike `dch` described below, the root is advisory.
+Unlike `dch` described below, the root is advisory and will not be
+verified as being part of the Block Set.
 
 These properties and only these properties may appear such that there
 is a deterministic encoding of the root and CID Set.
