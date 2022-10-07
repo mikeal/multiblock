@@ -15,7 +15,7 @@ Multiblock offers:
 
 Since each of these protocols is a multiformat, the shortform identifier
 is used in each README header since it is too early to assign multiformat
-identifiers to protocol
+identifiers to each protocol.
 
 ## `lmh` - Length Prefixed Multihash
 
