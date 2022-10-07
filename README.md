@@ -68,7 +68,7 @@ This is a set of blocks in CAR block format, ordered in the same stable sorting 
 as the above CID Set, all encoded with `raw` and a regular
 multihash (no `lmh` since CAR block data already has the length).
 
-Proceeding these blocks, is the block data for the CID Set.
+Preceeding these blocks, is the block data for the CID Set.
 
 Since there is only a single codec for the encoding of the blocks (`raw`)
 the CID Set, which must occur first in the CAR Block Set,
