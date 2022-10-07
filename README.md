@@ -6,8 +6,8 @@ over existing IPFS protocols, **without breaking or modifying
 any existing IPFS protocols.**
 
 Multiblock offers:
-* addresses and identifiers for CID Sets
-* addresses and identifiers for Block Sets
+* addresses and format for CID Sets
+* addresses and format for Block Sets
 * incremental verification of streamed block data
 * "deterministic CAR files"
 * "CAR indexing"
