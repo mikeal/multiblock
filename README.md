@@ -60,7 +60,7 @@ access into the block data.
 
 This is a set of blocks, ordered in the same stable sorting algorithm
 as the above CID Set, all encoded with `raw` and a regular
-multihash (no lmh since CAR block data already has the length).
+multihash (no `lmh` since CAR block data already has the length).
 
 Proceeding these blocks, is the block data for the CID Set.
 
