@@ -1,4 +1,4 @@
-# multiblock
+# `multiblock`
 
 Multiblock is a collection of multiformat protocols that,
 in aggregate, combine to provide an added layer of determinism
@@ -53,7 +53,7 @@ for every CID. This is what allows `ccs` to be used for
 incremental verfiication of a Block Set, and as an index for random
 access into the block data.
 
-## cbs - CAR Block Set
+## `cbs` - CAR Block Set
 
 This is a set of blocks, ordered in the same stable sorting algorithm
 as the above CID Set, all encoded with `raw` and a regular
@@ -69,7 +69,7 @@ indexing of the corresponding CAR block data.
 Since the CID Set is addressed separately, it can easily be loaded
 separately.
 
-## vch - Verifiable CAR Header
+## `vch` - Verifiable CAR Header
 
 It's tempting to skip striaght to deterministic CAR files, but we
 have numerous use cases that use the CAR header root to signal
