@@ -21,7 +21,10 @@ identifiers to protocol
 
 It is often the case that a data provider does not wish to agree to
 unbounded reads of any data, even at the block layer (which we are
-expanding in some systems beyond the traditional 2mb limit).
+expanding in some systems beyond the traditional 2mb limit). So we've
+wanted for some time an address that could include the size of the block
+data as part of its multihash verification such that it provides a good
+contract between the reader and the provider.
 
 `lmh` is a multihash that contains:
 * a multihash
