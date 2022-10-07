@@ -19,6 +19,10 @@ identifiers to each protocol.
 
 <img width="533" alt="Screen Shot 2022-10-07 at 3 36 03 PM" src="https://user-images.githubusercontent.com/579/194671782-2afaf64b-1d53-46ce-bf19-4f525709c7fc.png">
 
+All the protocols are designed to fit into the existing CAR format **AND**
+can be independently addressed by CID's w/ new codecs such that the
+CAR itself can be split into each of these parts.
+
 ## `lmh` - Length Prefixed Multihash
 
 It is often the case that a data provider does not wish to agree to
@@ -60,7 +64,7 @@ access into the block data.
 
 ## `cbs` - CAR Block Set
 
-This is a set of blocks, ordered in the same stable sorting algorithm
+This is a set of blocks in CAR block format, ordered in the same stable sorting algorithm
 as the above CID Set, all encoded with `raw` and a regular
 multihash (no `lmh` since CAR block data already has the length).
 
