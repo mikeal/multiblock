@@ -103,7 +103,7 @@ A CAR header that:
   * CID MUST use `lmh`.
 * Has a `multiblock` property set to `true`.
 
-This, combine with the above multiformats, compose into a
+This, combined with the above multiformats, compose into a
 fully determinsitic CAR encoding.
 
 
