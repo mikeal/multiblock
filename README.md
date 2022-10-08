@@ -83,6 +83,17 @@ indexing of the corresponding CAR block data.
 Since the CID Set is addressed separately, it can easily be loaded
 separately.
 
+## `multiblock` - multiformat identifier for this protocol
+
+Used for CID's that are the multihash of the CID Set + Block Set.
+
+These can be used as a secure means of one-to-one mapping of
+this data structure to inclusion proofs. As an example,
+if this data were zero-filled to meet the minimum size for a
+Piece CID in Filecoin, the corresponding Piece CID would
+map one-to-one with a `multiblock` CID and this fact is
+cryptographically secure.
+
 ## `vch` - Verifiable CAR Header
 
 It's tempting to skip striaght to deterministic CAR files, but we
