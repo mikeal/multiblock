@@ -101,7 +101,7 @@ A CAR header that:
   
 The "multiblock" property signals to anyone reading the CAR protocol
 that the corresponding block data can and should be additionally
-verified, but will obviously be ignored by anyone implemented the CAR
+verified, but will obviously be ignored by anyone implementing the CAR
 protocol without these `multiblock` additions. 
 
 Unlike `dch` described below, the root is advisory and will not be
