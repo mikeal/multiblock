@@ -125,6 +125,9 @@ The `vch` codec is used for addressing and identifying CAR headers
 stored outside the original CAR and MUST be a hash of *only* the CAR
 header. This allows for decompossing and de-duplicating CAR data.
 
+Since the header can be arrived at deterministically, its size can be
+predicted and skipped in the CAR it is written to.
+
 ## `dch` - Deterministic CAR Header
 
 A CAR header that:
@@ -145,3 +148,6 @@ The CID Set CID is used as a root because it appears in the CAR and
 the block refers to all other blocks in the CAR which allows the
 CAR file to interop with any system expecting the block data to
 be linked from the root.
+
+Since the header can be arrived at deterministically, it's size can be
+predicted and skipped in the CAR it is written to.
