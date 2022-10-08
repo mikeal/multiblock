@@ -5,6 +5,11 @@ in aggregate, combine to provide an added layer of determinism
 over existing IPFS protocols, **without breaking or modifying
 any existing IPFS protocols.**
 
+As we are well within the multihash protocol, the following protocols
+only ensure determinism per multihash and the same block data addressed
+with another hashing algorithm will of course produce differentiated
+determinism per multihash algorithm.
+
 Multiblock offers:
 * addresses and format for CID Sets
 * addresses and format for Block Sets
@@ -86,17 +91,24 @@ behavior that cannot be deterministically generated from the CID/Block Set.
 
 A CAR header that:
 * Must have single root.
-* Must include a property `multiblock` that is a link to the CID Set.
-  * This property signals to anyone reading the CAR protocol
-    that the corresponding block data can and should be additionally
-    verified. 
-  * This CID MUST use `lmh`.
+* Must include a property `multiblock` that is a List of three entries
+  * CID of the CID Set.
+    * This CID MUST use `lmh`.
+  * CID of the Block Set.
+    * This CID MUST use `lmh`.
+  * CID of the `multiblock` codec, which is a multihash of the CAR body
+    without the header (obviously).
+  
+The "multiblock" property signals to anyone reading the CAR protocol
+that the corresponding block data can and should be additionally
+verified, but will obviously be ignored by anyone implemented the CAR
+protocol without these `multiblock` additions. 
 
 Unlike `dch` described below, the root is advisory and will not be
 verified as being part of the Block Set.
 
-These properties and only these properties may appear such that there
-is a deterministic encoding of the root and CID Set.
+These properties and **only these properties** may appear to ensure a
+deterministic encoding of the root and CID Set together.
 
 The `vch` codec is used for addressing and identifying CAR headers
 stored outside the original CAR and MUST be a hash of *only* the CAR
@@ -105,11 +117,20 @@ header. This allows for decompossing and de-duplicating CAR data.
 ## `dch` - Deterministic CAR Header
 
 A CAR header that:
-* Must have a single root that MUST be a CID for the CID Set.
-  * CID MUST use `lmh`.
-* Has a `multiblock` property set to `true`.
+* Must have a single root that MUST be a `multiblock` CID.
+   * CID of the CID Set.
+    * This CID MUST use `lmh`.
+Must include a property `multiblock` that is a List of two entries
+  * CID of the Block Set.
+    * This CID MUST use `lmh`.
+  * CID of the `multiblock` codec, which is a multihash of the CAR body
+   without the header (obviously).
+    * This CID MUST use `lmh`.
 
 This, combined with the above multiformats, compose into a
 fully determinsitic CAR encoding.
 
-
+The CID Set CID is used as a root because it appears in the CAR and
+the block refers to all other blocks in the CAR which allows the
+CAR file to interop with any system expecting the block data to
+be linked from the root.
