@@ -149,5 +149,5 @@ the block refers to all other blocks in the CAR which allows the
 CAR file to interop with any system expecting the block data to
 be linked from the root.
 
-Since the header can be arrived at deterministically, it's size can be
+Since the header can be arrived at deterministically, its size can be
 predicted and skipped in the CAR it is written to.
