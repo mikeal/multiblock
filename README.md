@@ -18,9 +18,9 @@ Multiblock offers:
 * "CAR indexing"
 * and some other goodness :)
 
-Since each of these protocols is a multiformat, the shortform identifier
-is used in each README header since it is too early to assign multiformat
-identifiers to each protocol.
+Since each of these protocols is a multiformat, and it's too early to
+assign identifiers, the shortform string identifier
+is used in each README header.
 
 <img width="492" alt="Screen Shot 2022-10-07 at 6 55 23 PM" src="https://user-images.githubusercontent.com/579/194682288-1e3a4f19-b703-4921-9c05-311ff67e883b.png">
 
