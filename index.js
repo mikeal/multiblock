@@ -1,3 +1,5 @@
+/* this is not working yet, just jotting down ideas */
+
 
 // fastest string representation of binary
 // https://dev.doctorevidence.com/building-the-fastest-js-de-serializer-a413a2b4fb72
