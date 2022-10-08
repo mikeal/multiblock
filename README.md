@@ -22,8 +22,7 @@ Since each of these protocols is a multiformat, the shortform identifier
 is used in each README header since it is too early to assign multiformat
 identifiers to each protocol.
 
-<img width="466" alt="Screen Shot 2022-10-07 at 6 54 31 PM" src="https://user-images.githubusercontent.com/579/194682261-d055ca81-bdfe-4592-bee4-40854fe152ff.png">
-
+<img width="492" alt="Screen Shot 2022-10-07 at 6 55 23 PM" src="https://user-images.githubusercontent.com/579/194682288-1e3a4f19-b703-4921-9c05-311ff67e883b.png">
 
 All the protocols are designed to fit into the existing CAR format **AND**
 can be independently addressed by CID's w/ new codecs such that the
