@@ -85,7 +85,11 @@ separately.
 
 ## `multiblock` - multiformat identifier for this protocol
 
-Used for CID's that are the multihash of the CID Set + Block Set.
+Used for CID's that are the multihash address of (CID Set + Block Set)
+that is built from hashing the CID Set multihash and the
+Block Set multihash together, so a client can produce this address
+without the underlying data using just the **addresses** of the
+underlying data.
 
 These can be used as a secure means of one-to-one mapping of
 this data structure to inclusion proofs. As an example,
