@@ -28,6 +28,37 @@ All the protocols are designed to fit into the existing CAR format **AND**
 can be independently addressed by CID's w/ new codecs such that the
 CAR itself can be split into each of these parts.
 
+# What's New
+
+There are few new formats and several new CIDs for addressing these new formats.
+
+* Formats
+  * `lmh` - length prefixed multihash.
+  * `ccs` - compressed cid set.
+  * `cbs` - car block set
+  * `dbb` - deterministic block bytes
+  * `vch` - verificable CAR header
+  * `dch` - deterministic car header
+* Addresses (all CIDs)
+  * `ccs` - multihash of a `ccs` (CID Set) block.
+  * `cbs` - multihash of `cbs` data (CAR Block Data).
+  * `dbb` - multihash of all block data referenced in a CID Set
+            in deterministic order.
+            can be parsed using the lengths.
+  * `vch` - multihash of a CAR header in `vch` format
+  * `dch` - multihash of a CAR header in `dch` format
+  * `cbb` - mutlihash of two CIDS: the `ccs` CID and the `cbs` CID
+
+In combination, the various formats and addresses work together
+to give us some new super powers in high performance systems.
+
+Thinking and addressing in terms of Sets allows us to leverage
+Set inclusion checks rather than expensive graph traversals.
+
+These protocols also allow us to split, de-duplicate, and even translate
+Sets between formats rather than staying bound to the opaque CAR format
+we continue to interoporate with.
+
 ## `lmh` - Length Prefixed Multihash
 
 It is often the case that a data provider does not wish to agree to
@@ -83,9 +114,9 @@ indexing of the corresponding CAR block data.
 Since the CID Set is addressed separately, it can easily be loaded
 separately.
 
-## `multiblock` - multiformat identifier for this protocol
+## `cbb` - CAR Block Bytes
 
-Used for CID's that are the multihash address of (CID Set + Block Set)
+Used for CID's that are the multihash address of (CID Set + CAR Block Set)
 that is built from hashing the CID Set multihash and the
 Block Set multihash together, so a client can produce this address
 without the underlying data using just the **addresses** of the
@@ -113,7 +144,7 @@ A CAR header that:
     * This CID MUST use `lmh`.
   * CID of the `multiblock` codec, which is a multihash of the CAR body
     without the header (obviously).
-  
+
 The "multiblock" property signals to anyone reading the CAR protocol
 that the corresponding block data can and should be additionally
 verified, but will obviously be ignored by anyone implementing the CAR
