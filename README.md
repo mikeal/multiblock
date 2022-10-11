@@ -137,7 +137,7 @@ behavior that cannot be deterministically generated from the CID/Block Set.
 
 A CAR header that:
 * Must have single root.
-* Must include a property `multiblock` that is a List of three entries
+* Must include a property `multiblock` that is a List of 4 entries
   * CID of the CID Set (ccs).
     * This CID MUST use `lmh`.
   * CID of the Block Set (cbs).
@@ -169,9 +169,9 @@ predicted and skipped in the CAR it is written to.
 
 A CAR header that:
 * Must have a single root that MUST be a `cbb` CID.
-   * CID of the CID Set.
+  * CID of the CID Set.
     * This CID MUST use `lmh`.
-Must include a property `multiblock` that is a List of two entries
+* Must include a property `multiblock` that is a List of 3 entries
   * CID of the `cbs` (CAR Block Set).
     * This CID MUST use `lmh`.
   * CID of the `dbb` codec.
