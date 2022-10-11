@@ -138,12 +138,14 @@ behavior that cannot be deterministically generated from the CID/Block Set.
 A CAR header that:
 * Must have single root.
 * Must include a property `multiblock` that is a List of three entries
-  * CID of the CID Set.
+  * CID of the CID Set (ccs).
     * This CID MUST use `lmh`.
-  * CID of the Block Set.
+  * CID of the Block Set (cbs).
     * This CID MUST use `lmh`.
-  * CID of the `cbb` codec, which is a multihash of the CAR body
-    without the header (obviously).
+  * CID of the `dbb` codec.
+    * This CID MUST use `lmh`.
+  * CID of the `cbb` codec.
+    * This CID MUST use `lmh`.
 
 The "multiblock" property signals to anyone reading the CAR protocol
 that the corresponding block data can and should be additionally
@@ -170,11 +172,13 @@ A CAR header that:
    * CID of the CID Set.
     * This CID MUST use `lmh`.
 Must include a property `multiblock` that is a List of two entries
-  * CID of the Block Set.
+  * CID of the `cbs` (CAR Block Set).
     * This CID MUST use `lmh`.
-  * CID of the `cbb` codec, which is a multihash of the CAR body
-   without the header (obviously).
+  * CID of the `dbb` codec.
+     * This CID MUST use `lmh`.
+  * CID of the `cbb` codec.
     * This CID MUST use `lmh`.
+  
 
 This, combined with the above multiformats, compose into a
 fully determinsitic CAR encoding.
