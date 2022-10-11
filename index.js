@@ -8,14 +8,16 @@ const toString = cid => String.fromCharCode(...cid.bytes)
 class CIDSet {
   constructor () {
     this.cids = new Map()
+    this.lengths = new Map()
   }
   has (key) {
     if (typeof key !== 'string') key = toString(key)
     return this.cids.has(key)
   }
-  append (cid, key) {
+  append (cid, length, key) {
     if (!key) key = toString(cid)
     this.cids.set(key, cid)
+    this.lengths.set(key, length)
     return key
   }
 }
@@ -27,7 +29,7 @@ class BlockSet {
   }
   append ({ cid, bytes, key }) {
     if (!key) key = toString(cid)
-    this.cids.append(cid, key)
+    this.cids.append(cid, bytes.byteLength, key)
     this.blocks.set(key, bytes)
     return key
   }
