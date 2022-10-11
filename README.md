@@ -126,7 +126,7 @@ These can be used as a secure means of one-to-one mapping of
 this data structure to inclusion proofs. As an example,
 if this data were zero-filled to meet the minimum size for a
 Piece CID in Filecoin, the corresponding Piece CID would
-map one-to-one with a `multiblock` CID and this fact is
+map one-to-one with a `cbb` CID and this fact is
 cryptographically secure.
 
 ## `vch` - Verifiable CAR Header
@@ -142,7 +142,7 @@ A CAR header that:
     * This CID MUST use `lmh`.
   * CID of the Block Set.
     * This CID MUST use `lmh`.
-  * CID of the `multiblock` codec, which is a multihash of the CAR body
+  * CID of the `cbb` codec, which is a multihash of the CAR body
     without the header (obviously).
 
 The "multiblock" property signals to anyone reading the CAR protocol
@@ -166,13 +166,13 @@ predicted and skipped in the CAR it is written to.
 ## `dch` - Deterministic CAR Header
 
 A CAR header that:
-* Must have a single root that MUST be a `multiblock` CID.
+* Must have a single root that MUST be a `cbb` CID.
    * CID of the CID Set.
     * This CID MUST use `lmh`.
 Must include a property `multiblock` that is a List of two entries
   * CID of the Block Set.
     * This CID MUST use `lmh`.
-  * CID of the `multiblock` codec, which is a multihash of the CAR body
+  * CID of the `cbb` codec, which is a multihash of the CAR body
    without the header (obviously).
     * This CID MUST use `lmh`.
 
