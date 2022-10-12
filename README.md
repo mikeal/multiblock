@@ -39,7 +39,7 @@ There are few new formats and several new CIDs for addressing these new formats.
   * `dbb` - deterministic block bytes
   * `vch` - verificable CAR header
   * `dch` - deterministic car header
-* Addresses (all CIDs)
+* when used as codecs in CID's
   * `ccs` - multihash of a `ccs` (CID Set) block.
   * `cbs` - multihash of `cbs` data (CAR Block Data).
   * `dbb` - multihash of all block data referenced in a CID Set
@@ -48,8 +48,29 @@ There are few new formats and several new CIDs for addressing these new formats.
   * `vch` - multihash of a CAR header in `vch` format
   * `dch` - multihash of a CAR header in `dch` format
   * `cbb` - mutlihash of two CIDS: the `ccs` CID and the `cbs` CID
+* and `ccs` can also be used as a `multihash` where it has special
+  parsing rules (length-prefixed multihash in a multihash).
 
-In combination, the various formats and addresses work together
+And there are also new compound forms to address larger ranges
+using CID Sets as a means of incremental verification.
+
+So a CID of `cbs` or `dbb` with a `css` ***multihash***, the hash digest
+would still be the hash of the CID Set block data, but the address
+would *represent* the block data the CID Set internally addresses.
+
+Since the `css` multihash has the length of *all the underlying
+block data* this provides a very efficient means of incremental
+verification of the contract this length represents. Once the
+block data for the CID Set is retreived, an early verification can
+take place matching the length in the address with the lengths
+in the CID Set. As the block data streams to the client, every
+individual block in the set can continue to be incrementally
+verified.
+
+Moreover, this entire exchange can occur in a single roundtrip
+since the CID Set block would be streamed first.
+
+In combinations like this, all the formats and addresses work together
 to give us some new super powers in high performance systems.
 
 Thinking and addressing in terms of Sets allows us to leverage
