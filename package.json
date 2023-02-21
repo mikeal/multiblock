@@ -1,0 +1,26 @@
+{
+  "name": "multiblock",
+  "description": "Multiblock is a collection of multiformat protocols that, in aggregate, combine to provide an added layer of determinism over existing IPFS protocols, **without breaking or modifying any existing IPFS protocols.**",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikeal/multiblock.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikeal/multiblock/issues"
+  },
+  "homepage": "https://github.com/mikeal/multiblock#readme",
+  "dependencies": {
+    "varint-vectors": "^1.0.0"
+  }
+}

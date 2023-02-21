@@ -5,19 +5,24 @@
 // https://dev.doctorevidence.com/building-the-fastest-js-de-serializer-a413a2b4fb72
 const toString = cid => String.fromCharCode(...cid.bytes)
 
-class CIDSet {
+const CIDSet {
   constructor () {
-    this.cids = new Map()
-    this.lengths = new Map()
+    this.map = new Map()
   }
   has (key) {
     if (typeof key !== 'string') key = toString(key)
     return this.cids.has(key)
   }
-  append (cid, length, key) {
+  get (key) {
+    if (typeof key !== 'string') key = toString(key)
+    const result = this.map.get(key)
+    if (!result) return null
+    const [ cid, length ] = result
+    return { cid, length, key }
+  }
+  append({ cid, length, key }) {
     if (!key) key = toString(cid)
-    this.cids.set(key, cid)
-    this.lengths.set(key, length)
+    this.map.set(key, [ cid, length ])
     return key
   }
 }
@@ -29,7 +34,8 @@ class BlockSet {
   }
   append ({ cid, bytes, key }) {
     if (!key) key = toString(cid)
-    this.cids.append(cid, bytes.byteLength, key)
+    const length = bytes.byteLength
+    this.cids.append({ cid, length, key })
     this.blocks.set(key, bytes)
     return key
   }
