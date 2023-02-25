@@ -1,6 +1,7 @@
 {
   "name": "multiblock",
   "description": "Multiblock is a collection of multiformat protocols that, in aggregate, combine to provide an added layer of determinism over existing IPFS protocols, **without breaking or modifying any existing IPFS protocols.**",
+  "type": "module",
   "version": "1.0.0",
   "main": "index.js",
   "directories": {
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/mikeal/multiblock#readme",
   "dependencies": {
+    "car-transaction": "^1.0.1",
     "varint-vectors": "^1.0.0"
   }
 }

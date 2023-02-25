@@ -6,19 +6,34 @@ with many IPLD blocks as larger Sets().
 On some level, this is the "BGP Layer" of IPFS Data,
 or at least one version of it.
 
+# Problem #1 dealing with **Billions** of hashes
+
+At scale, it becomes unfeasible to maintain a single large
+index of every block hash using traditional database
+technologies. Even when a given RDBMS can handle the load
+it becomes probibitively expensive.
+
+When a system performs CAR validation (block address verification)
+it is also in a position to produce more efficient pre-computed
+indexes, like the CARv2 indexes that are used in a few IPFS systems.
+
+The CARv2 index was built for flexibility rather than compactness, so
+if we want to work with **Billions** of hashes in a limited memory space
+(smaller than the size of the digests) we're going to need to some new tools.
+
 ## car-cache
 
 This is a binary serialization of a CAR index that can be
 hot loaded in and out of various data-structures.
 
 There are two blocks types and an aggregate of both blocks
-together that can be addressed as a block together, so
-there are 3 multiformats in total.
+together that can be addressed as a block together. Since one
+of the blocks is a linear serialization of hashes it uses a `raw`
+codec (in IPLD terms) the other two use new codecs.
 
 * The first block is a delta compressed parse of the CAR file.
-* The second block is a linear encoding of the multihashe
-digests that appear in that CAR file, the parsing which can be determined from the previous block,
-which is why
+* The second block is a linear encoding of the hash
+digests that appear in that CAR file, the parsing of which can be determined from the previous block, which is why
 * The third block is just a varint for the size of the first block,
   proceeded by the first block, then the second.
 
